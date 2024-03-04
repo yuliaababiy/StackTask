@@ -1,20 +1,74 @@
-// StackTask.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+class Stack {
+private:
+    int* array;
+    int size;
+    int top;
+
+public:
+    Stack(int stackSize) : size(stackSize), top(-1) {
+        array = new int[size];
+    }
+
+    ~Stack() {
+        delete[] array;
+    }
+
+    void push(int value) {
+        if (top < size - 1) {
+            array[++top] = value;
+            cout << "Pushed: " << value << endl;
+        }
+        else {
+            cerr << "Stack Overflow: Cannot push element, the stack is full." << endl;
+        }
+    }
+
+    int pop() {
+        if (top >= 0) {
+            cout << "Popped: " << array[top] << endl;
+            return array[top--];
+        }
+        else {
+            cerr << "Stack Underflow: Cannot pop element, the stack is empty." << endl;
+            return -1;
+        }
+    }
+
+    int peek() const {
+        if (top >= 0) {
+            cout << "Peek: " << array[top] << endl;
+            return array[top];
+        }
+        else {
+            cerr << "Peek: Stack is empty." << endl;
+            return -1;
+        }
+    }
+};
+
+int main() {
+    Stack myStack(5);
+
+    myStack.push(10);
+    myStack.push(20);
+    myStack.push(30);
+
+    myStack.peek();
+
+    myStack.pop();
+    myStack.pop();
+    myStack.pop();
+    myStack.pop();
+
+    myStack.peek();
+
+    myStack.push(40);
+    myStack.push(50);
+
+    myStack.peek();
+
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
