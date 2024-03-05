@@ -16,18 +16,30 @@ public:
 
 	bool push(int value) {
 		if (top < size - 1) {
+			// top = -1
+			// top = 0
+			// array[0] = 5
+			// top = 1
+			// array[1] = 10
+			// top = 2
+			// array[2] = 7
 			array[++top] = value;
 			cout << value << " was pushed" <<endl;
 			return true;
 		}
 		else {
-			cout << "Cannot push element because the stack is full" << std::endl;
+			cout << "Cannot push element because the stack is full" <<endl;
 			return false;
 		}
 	}
 
 	int pop() {
 		if (top >= 0) {
+			// 1 2 3, top = 2
+			// pop першого елементу
+			// top = 1
+			// return 3
+			// видаляє елемент і повертає його
 			cout << array[top--] << " was popped" << endl;
 			return array[top + 1];
 		}
@@ -66,6 +78,7 @@ void testPushAndPop() {
 	Stack stack(2);
 	stack.push(10);
 	stack.push(20);
+	//  10 20
 	int popped1 = stack.pop();
 	int popped2 = stack.pop();
 	if (popped1 == 20 && popped2 == 10) {
@@ -94,10 +107,10 @@ void testPushWhenFull() {
 	stack.push(10);
 	stack.push(20);
 	if (stack.push(30) == false) {
-		cout << "Push when full test passed" << std::endl;
+		cout << "Push when full test passed" <<endl;
 	}
 	else {
-		cout << "Push when full test failed" << std::endl;
+		cout << "Push when full test failed" <<endl;
 	}
 }
 
@@ -139,6 +152,7 @@ int main() {
 		cout << "Your action: ";
 		cin >> actionValue;
 		switch (actionValue) {
+		// if actionValue == 1 те саме що case:1
 		case 1: {
 			int pushOperationValue;
 			cout << "Enter value you want to push" << endl;
@@ -181,7 +195,7 @@ int main() {
 			break;
 		}
 		}
-	} while (actionValue != 5);
+	} while (actionValue != 6);
 
 	return 0;
 }
