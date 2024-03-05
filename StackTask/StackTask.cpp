@@ -17,7 +17,7 @@ public:
 	bool push(int value) {
 		if (top < size - 1) {
 			array[++top] = value;
-			cout << value << " was pushed" << std::endl;
+			cout << value << " was pushed" <<endl;
 			return true;
 		}
 		else {
